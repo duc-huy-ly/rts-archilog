@@ -1,7 +1,7 @@
-package rts.core;
+package rts.behaviors;
 
-public interface IEntity {
-   float getHP();
+public interface BehaviorSoldier {
+   float getHp();
    boolean isAlive();
    float getAD();
    void getHit(float dmg);
