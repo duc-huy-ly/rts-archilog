@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import rts.equipments.IEquipment;
+
 public class UnitGroup implements IUnit {
     private String _name;
 
@@ -100,6 +102,13 @@ public class UnitGroup implements IUnit {
         if (_unitSet.contains(u)){
             _units.remove(u);
             _unitSet.remove(u);
+        }
+    }
+
+    @Override
+    public void addEquipment(IEquipment e) {
+        for (IUnit unit : _units) {
+           unit.addEquipment(e); 
         }
     }
 

@@ -1,11 +1,12 @@
 package rts.core;
 
 import rts.behaviors.BehaviorSoldier;
+import rts.equipments.IEquipment;
 
 public class ConstExtension extends BehaviorExtension {
 
-    public ConstExtension(BehaviorSoldier component, float dmg, float armor) {
-        super(component);
+    public ConstExtension(BehaviorSoldier component, IEquipment equipment, float dmg, float armor) {
+        super(component, equipment);
         _dmg = dmg;
         _armor = armor;
     }
@@ -13,10 +14,9 @@ public class ConstExtension extends BehaviorExtension {
     private float _dmg;
     private float _armor;
 
-
     @Override
     public float getAD() {
-        return super.getAD() + _dmg ;
+        return super.getAD() + _dmg;
     }
 
     @Override
@@ -24,6 +24,4 @@ public class ConstExtension extends BehaviorExtension {
         return super.getArmor() + _armor;
     }
 
-    
-    
 }

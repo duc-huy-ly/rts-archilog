@@ -2,6 +2,8 @@ package rts.abstraction;
 
 import java.util.Iterator;
 
+import rts.equipments.IEquipment;
+
 public interface IUnit {
     float getHp();
     boolean isAlive();
@@ -12,4 +14,5 @@ public interface IUnit {
     void addUnit(IUnit u);
     void removeUnit(IUnit u);
     Iterator<IUnit> getUnits();
+    void addEquipment(IEquipment e);
 }

@@ -1,13 +1,15 @@
 package rts.core;
 
 import rts.behaviors.BehaviorSoldier;
+import rts.equipments.IEquipment;
 
 public abstract class BehaviorExtension implements BehaviorSoldier {
     private BehaviorSoldier _component;
+    private IEquipment _equipment;
 
-
-    public BehaviorExtension(BehaviorSoldier component)  {
+    public BehaviorExtension(BehaviorSoldier component, IEquipment equipment)  {
         _component = component;
+        _equipment = equipment;
     }
 
 
@@ -23,7 +25,7 @@ public abstract class BehaviorExtension implements BehaviorSoldier {
 
     @Override
     public float getAD() {
-        return _component.getAD();
+        return _component.getAD() ;
     }
 
     @Override
@@ -38,6 +40,10 @@ public abstract class BehaviorExtension implements BehaviorSoldier {
 
     public BehaviorSoldier get_component() {
         return _component;
+    }
+
+    public IEquipment getEquipment() {
+        return _equipment;
     }
 
 

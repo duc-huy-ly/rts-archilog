@@ -1,8 +1,7 @@
 package rts.behaviors;
 
 public class ConstBehavior extends ABehavior{
-
-    public ConstBehavior(float _dmg, float _hp, float _armor) {
+    public ConstBehavior( float _dmg, float _hp, float _armor) {
         super(_dmg, _hp, _armor);
     }
 

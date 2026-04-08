@@ -5,6 +5,7 @@ public abstract class ABehavior implements BehaviorSoldier {
     private float _hp;
     private float _armor;
 
+    
     public ABehavior(float dmg, float hp, float armor) {
         _ad = dmg;
         _hp = hp;

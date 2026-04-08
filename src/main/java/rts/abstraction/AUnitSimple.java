@@ -3,6 +3,7 @@ package rts.abstraction;
 import java.util.Iterator;
 
 import rts.behaviors.BehaviorSoldier;
+import rts.equipments.IEquipment;
 
 public abstract class AUnitSimple implements IUnit {
     private BehaviorSoldier _behavior;
@@ -57,6 +58,12 @@ public abstract class AUnitSimple implements IUnit {
     public void removeUnit(IUnit u) {
         
     }
+
+    @Override
+    public void addEquipment(IEquipment e) {
+        _behavior = e.createExtension(_behavior); 
+    }
+    
 
 
 }
