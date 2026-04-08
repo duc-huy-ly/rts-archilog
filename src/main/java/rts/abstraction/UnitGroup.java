@@ -112,4 +112,11 @@ public class UnitGroup implements IUnit {
         }
     }
 
+    @Override
+    public void removeEquipment(IEquipment e) {
+        for (IUnit unit : _units) {
+            unit.removeEquipment(e);
+        }
+    }
+
 }

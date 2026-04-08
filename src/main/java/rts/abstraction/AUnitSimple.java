@@ -3,6 +3,7 @@ package rts.abstraction;
 import java.util.Iterator;
 
 import rts.behaviors.BehaviorSoldier;
+import rts.core.BehaviorExtension;
 import rts.equipments.IEquipment;
 
 public abstract class AUnitSimple implements IUnit {
@@ -65,5 +66,27 @@ public abstract class AUnitSimple implements IUnit {
     }
     
 
+    @Override
+    public void removeEquipment(IEquipment e){
+        // Check if the equipment is at the head
+        if (_behavior instanceof BehaviorExtension && ((BehaviorExtension) _behavior).getEquipment() == e){
+            _behavior = ((BehaviorExtension) _behavior).get_component();
+            return;
+        }
+        
+        // Otherwise, traverse to find and remove it
+        BehaviorSoldier pre = _behavior;
+        BehaviorSoldier cur = _behavior;
+
+        while(cur instanceof BehaviorExtension && ((BehaviorExtension) cur).getEquipment() != e){
+            pre = cur;
+            cur = ((BehaviorExtension)cur).get_component();
+        }
+        
+        if (cur instanceof BehaviorExtension && ((BehaviorExtension) cur).getEquipment() == e){
+            ((BehaviorExtension) pre).setBehavior(((BehaviorExtension)cur).get_component());
+        }
+        
+    }
 
 }

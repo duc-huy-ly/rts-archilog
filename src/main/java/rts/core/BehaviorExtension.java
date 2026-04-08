@@ -12,7 +12,6 @@ public abstract class BehaviorExtension implements BehaviorSoldier {
         _equipment = equipment;
     }
 
-
     @Override
     public float getHp() {
         return _component.getHp();
@@ -46,5 +45,8 @@ public abstract class BehaviorExtension implements BehaviorSoldier {
         return _equipment;
     }
 
+    public void setBehavior(BehaviorSoldier b){
+        _component = b;
+    }
 
 }

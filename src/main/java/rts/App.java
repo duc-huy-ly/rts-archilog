@@ -4,7 +4,7 @@ import rts.abstraction.Barbarian;
 import rts.abstraction.IUnit;
 import rts.behaviors.BehaviorSoldier;
 import rts.equipments.Blaster;
-import rts.equipments.Knife;
+import rts.equipments.IEquipment;
 
 /**
  * Hello world!
@@ -35,10 +35,13 @@ public class App {
 
     public static void addWeaponTest(){
         IUnit tuco = new Barbarian("Tuco");
+        IEquipment gun = new Blaster();
+        Blaster gun2 = new Blaster();
         System.out.println("Tuco 's attack damage : " + tuco.getAD());
-        tuco.addEquipment(new Knife());
-        System.out.println("new ad of Tuco with knife : " + tuco.getAD());
-        tuco.addEquipment(new Blaster());
+        tuco.addEquipment(gun);
+        tuco.addEquipment(gun2);
+        System.out.println("Tuco 's attack damage : " + tuco.getAD());
+        tuco.removeEquipment(gun); 
         System.out.println(tuco.getAD());
     }
 }

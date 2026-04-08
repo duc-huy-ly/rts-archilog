@@ -15,4 +15,5 @@ public interface IUnit {
     void removeUnit(IUnit u);
     Iterator<IUnit> getUnits();
     void addEquipment(IEquipment e);
+    void removeEquipment(IEquipment e);
 }
