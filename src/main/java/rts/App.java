@@ -3,6 +3,7 @@ package rts;
 import rts.abstraction.Barbarian;
 import rts.abstraction.IUnit;
 import rts.behaviors.BehaviorSoldier;
+import rts.equipments.Blaster;
 import rts.equipments.Knife;
 
 /**
@@ -37,6 +38,8 @@ public class App {
         System.out.println("Tuco 's attack damage : " + tuco.getAD());
         tuco.addEquipment(new Knife());
         System.out.println("new ad of Tuco with knife : " + tuco.getAD());
+        tuco.addEquipment(new Blaster());
+        System.out.println(tuco.getAD());
     }
 }
 
