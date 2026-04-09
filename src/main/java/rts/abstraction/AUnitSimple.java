@@ -5,6 +5,8 @@ import java.util.Iterator;
 import rts.behaviors.BehaviorSoldier;
 import rts.core.BehaviorExtension;
 import rts.equipments.IEquipment;
+import rts.observer.UnitEvent;
+import rts.observer.UnitEventType;
 
 public abstract class AUnitSimple extends ObservableUnit {
     private BehaviorSoldier _behavior;
@@ -28,7 +30,7 @@ public abstract class AUnitSimple extends ObservableUnit {
     @Override
     public void getHit(float dmg) {
        _behavior.getHit(dmg); 
-       super.notifySubscribers();
+         super.notifySubscribers(new UnitEvent(this, UnitEventType.HIT, dmg, null));
     }
 
     @Override
@@ -64,7 +66,7 @@ public abstract class AUnitSimple extends ObservableUnit {
     @Override
     public void addEquipment(IEquipment e) {
         _behavior = e.createExtension(_behavior); 
-        super.notifySubscribers();
+        super.notifySubscribers(new UnitEvent(this, UnitEventType.EQUIPMENT_ADDED, 0, e));
     }
     
 
@@ -73,7 +75,7 @@ public abstract class AUnitSimple extends ObservableUnit {
         // Check if the equipment is at the head
         if (_behavior instanceof BehaviorExtension && ((BehaviorExtension) _behavior).getEquipment() == e){
             _behavior = ((BehaviorExtension) _behavior).get_component();
-            super.notifySubscribers();
+            super.notifySubscribers(new UnitEvent(this, UnitEventType.EQUIPMENT_REMOVED, 0, e));
             return;
         }
         
@@ -88,7 +90,7 @@ public abstract class AUnitSimple extends ObservableUnit {
         
         if (cur instanceof BehaviorExtension && ((BehaviorExtension) cur).getEquipment() == e){
             ((BehaviorExtension) pre).setBehavior(((BehaviorExtension)cur).get_component());
-            super.notifySubscribers();
+            super.notifySubscribers(new UnitEvent(this, UnitEventType.EQUIPMENT_REMOVED, 0, e));
         }
         
     }

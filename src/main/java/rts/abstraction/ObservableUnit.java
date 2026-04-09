@@ -6,6 +6,7 @@ import java.util.Set;
 
 import rts.observer.ISubscriber;
 import rts.observer.Observable;
+import rts.observer.UnitEvent;
 
 public abstract class ObservableUnit implements IUnit, Observable {
     private final Set<ISubscriber> subscribers = new LinkedHashSet<>();
@@ -16,9 +17,9 @@ public abstract class ObservableUnit implements IUnit, Observable {
     }
 
     @Override
-    public void notifySubscribers() {
+    public void notifySubscribers(UnitEvent event) {
         for (ISubscriber s : Set.copyOf(subscribers)) {
-            s.update(this);
+            s.update(event);
         }
     }
 

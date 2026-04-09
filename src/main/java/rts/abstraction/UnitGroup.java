@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import rts.equipments.IEquipment;
+import rts.observer.UnitEvent;
+import rts.observer.UnitEventType;
 
 public class UnitGroup extends ObservableUnit {
     private final String _name;
@@ -21,7 +23,7 @@ public class UnitGroup extends ObservableUnit {
         if (!_unitSet.contains(u)){
             _units.add(u);
             _unitSet.add(u);
-            notifySubscribers();
+            notifySubscribers(new UnitEvent(this, UnitEventType.UNIT_ADDED, 0, null));
         }
     }
 
@@ -73,7 +75,7 @@ public class UnitGroup extends ObservableUnit {
             }
         }
 
-        notifySubscribers();
+        notifySubscribers(new UnitEvent(this, UnitEventType.HIT, dmg, null));
     }
 
     @Override
@@ -105,7 +107,7 @@ public class UnitGroup extends ObservableUnit {
         if (_unitSet.contains(u)){
             _units.remove(u);
             _unitSet.remove(u);
-            notifySubscribers();
+            notifySubscribers(new UnitEvent(this, UnitEventType.UNIT_REMOVED, 0, null));
         }
     }
 
@@ -115,7 +117,7 @@ public class UnitGroup extends ObservableUnit {
            unit.addEquipment(e); 
         }
 
-        notifySubscribers();
+          notifySubscribers(new UnitEvent(this, UnitEventType.EQUIPMENT_ADDED, 0, e));
     }
 
     @Override
@@ -124,7 +126,7 @@ public class UnitGroup extends ObservableUnit {
             unit.removeEquipment(e);
         }
 
-        notifySubscribers();
+        notifySubscribers(new UnitEvent(this, UnitEventType.EQUIPMENT_REMOVED, 0, e));
     }
 
 }
