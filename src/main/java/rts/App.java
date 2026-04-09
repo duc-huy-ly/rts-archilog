@@ -2,19 +2,22 @@ package rts;
 
 import rts.abstraction.Barbarian;
 import rts.abstraction.IUnit;
+import rts.abstraction.ObservableUnit;
 import rts.ages.Factory;
 import rts.ages.SpaceAge;
 import rts.behaviors.BehaviorSoldier;
 import rts.equipments.Blaster;
 import rts.equipments.IEquipment;
+import rts.observer.UnitSubscriber;
 
 /**
  * Hello world!
  */
 public class App {
     public static void main(String[] args) {
-        addWeaponTest();
-        factorytest(new SpaceAge());
+        Factory f = new SpaceAge();
+        subscriberTest(f);
+
     }
 
     public static void fight(BehaviorSoldier s1, BehaviorSoldier s2){
@@ -57,6 +60,20 @@ public class App {
         u2.addEquipment(e2);
         u1.getHit(u2.getAD());
         System.out.println(u1.getHp());
+    }
+
+    public static void subscriberTest(Factory f){
+        IUnit u1 = f.makeRangedUnit("chuck");
+        UnitSubscriber s = new UnitSubscriber();
+        UnitSubscriber s2 = new UnitSubscriber();
+        ObservableUnit o1 = ((ObservableUnit)u1);
+        o1.addSubscriber(s); 
+        o1.addSubscriber(s2);
+        o1.getHit(1);
+        System.out.println("------ Removing s from o1 ------");
+        o1.removeSubscriber(s);
+        o1.getHit(1);
+        
     }
 }
 

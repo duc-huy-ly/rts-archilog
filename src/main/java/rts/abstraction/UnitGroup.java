@@ -6,7 +6,7 @@ import java.util.Iterator;
 
 import rts.equipments.IEquipment;
 
-public class UnitGroup implements IUnit {
+public class UnitGroup extends ObservableUnit {
     private String _name;
 
     public UnitGroup(String name){

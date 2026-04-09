@@ -6,7 +6,7 @@ import rts.behaviors.BehaviorSoldier;
 import rts.core.BehaviorExtension;
 import rts.equipments.IEquipment;
 
-public abstract class AUnitSimple implements IUnit {
+public abstract class AUnitSimple extends ObservableUnit {
     private BehaviorSoldier _behavior;
     private String _name;
 
@@ -28,6 +28,7 @@ public abstract class AUnitSimple implements IUnit {
     @Override
     public void getHit(float dmg) {
        _behavior.getHit(dmg); 
+       super.notifySubscribers();
     }
 
     @Override
