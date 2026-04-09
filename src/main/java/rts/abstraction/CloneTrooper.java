@@ -1,6 +1,6 @@
 package rts.abstraction;
 
-import rts.behaviors.LogBehavior;
+import rts.implementation.behaviors.LogBehavior;
 
 public class CloneTrooper extends  AUnitSimple {
 

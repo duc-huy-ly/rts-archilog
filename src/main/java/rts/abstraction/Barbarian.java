@@ -1,6 +1,6 @@
 package rts.abstraction;
 
-import rts.behaviors.ConstBehavior;
+import rts.implementation.behaviors.ConstBehavior;
 
 public class Barbarian extends AUnitSimple {
 

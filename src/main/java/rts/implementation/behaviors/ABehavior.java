@@ -1,4 +1,4 @@
-package rts.behaviors;
+package rts.implementation.behaviors;
 
 public abstract class ABehavior implements BehaviorSoldier {
     private float _ad;

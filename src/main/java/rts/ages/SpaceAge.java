@@ -3,9 +3,9 @@ package rts.ages;
 import rts.abstraction.CloneTrooper;
 import rts.abstraction.IUnit;
 import rts.abstraction.JediKnight;
-import rts.equipments.Blaster;
-import rts.equipments.IEquipment;
-import rts.equipments.LightSaber;
+import rts.implementation.equipments.Blaster;
+import rts.implementation.equipments.IEquipment;
+import rts.implementation.equipments.LightSaber;
 
 public class SpaceAge implements Factory {
 

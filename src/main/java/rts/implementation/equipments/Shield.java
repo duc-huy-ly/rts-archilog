@@ -1,7 +1,6 @@
-package rts.equipments;
+package rts.implementation.equipments;
 
-import rts.behaviors.BehaviorSoldier;
-import rts.core.ConstExtension;
+import rts.implementation.behaviors.BehaviorSoldier;
 
 public class Shield extends AEquipment{
 

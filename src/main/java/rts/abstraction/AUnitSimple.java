@@ -2,9 +2,9 @@ package rts.abstraction;
 
 import java.util.Iterator;
 
-import rts.behaviors.BehaviorSoldier;
-import rts.core.BehaviorExtension;
-import rts.equipments.IEquipment;
+import rts.implementation.behaviors.BehaviorSoldier;
+import rts.implementation.equipments.BehaviorExtension;
+import rts.implementation.equipments.IEquipment;
 import rts.observer.EventType;
 import rts.observer.UnitEvent;
 

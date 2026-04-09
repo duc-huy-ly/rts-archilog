@@ -1,6 +1,6 @@
-package rts.equipments;
+package rts.implementation.equipments;
 
-import rts.behaviors.BehaviorSoldier;
+import rts.implementation.behaviors.BehaviorSoldier;
 
 public interface IEquipment extends Cloneable{
     BehaviorSoldier createExtension(BehaviorSoldier b);

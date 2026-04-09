@@ -1,4 +1,4 @@
-package rts.behaviors;
+package rts.implementation.behaviors;
 
 public class ConstBehavior extends ABehavior{
     public ConstBehavior( float _dmg, float _hp, float _armor) {

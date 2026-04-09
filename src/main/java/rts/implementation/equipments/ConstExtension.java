@@ -1,7 +1,6 @@
-package rts.core;
+package rts.implementation.equipments;
 
-import rts.behaviors.BehaviorSoldier;
-import rts.equipments.IEquipment;
+import rts.implementation.behaviors.BehaviorSoldier;
 
 public class ConstExtension extends BehaviorExtension {
 

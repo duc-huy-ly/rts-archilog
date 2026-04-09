@@ -1,7 +1,7 @@
 package rts.observer;
 
 import rts.abstraction.ObservableUnit;
-import rts.equipments.IEquipment;
+import rts.implementation.equipments.IEquipment;
 
 public class UnitEvent {
     private EventType _type;

@@ -1,4 +1,4 @@
-package rts.equipments;
+package rts.implementation.equipments;
 
 public abstract class AEquipment implements IEquipment {
 

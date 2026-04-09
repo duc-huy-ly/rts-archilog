@@ -5,9 +5,9 @@ import rts.abstraction.IUnit;
 import rts.abstraction.ObservableUnit;
 import rts.ages.Factory;
 import rts.ages.SpaceAge;
-import rts.behaviors.BehaviorSoldier;
-import rts.equipments.Blaster;
-import rts.equipments.IEquipment;
+import rts.implementation.behaviors.BehaviorSoldier;
+import rts.implementation.equipments.Blaster;
+import rts.implementation.equipments.IEquipment;
 import rts.observer.EquipmentSubscriber;
 import rts.observer.UnitSubscriber;
 

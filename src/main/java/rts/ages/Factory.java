@@ -1,7 +1,7 @@
 package rts.ages;
 
 import rts.abstraction.IUnit;
-import rts.equipments.IEquipment;
+import rts.implementation.equipments.IEquipment;
 
 public interface Factory {
     IUnit makeMeleeUnit(String name);

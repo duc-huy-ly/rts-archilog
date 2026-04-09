@@ -2,7 +2,7 @@ package rts.abstraction;
 
 import java.util.Iterator;
 
-import rts.equipments.IEquipment;
+import rts.implementation.equipments.IEquipment;
 
 public interface IUnit {
     float getHp();

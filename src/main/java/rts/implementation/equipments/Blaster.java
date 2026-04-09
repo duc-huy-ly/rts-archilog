@@ -1,7 +1,6 @@
-package rts.equipments;
+package rts.implementation.equipments;
 
-import rts.behaviors.BehaviorSoldier;
-import rts.core.MultiplierExtension;
+import rts.implementation.behaviors.BehaviorSoldier;
 
 public class Blaster extends AEquipment{
 

@@ -1,4 +1,4 @@
-package rts.behaviors;
+package rts.implementation.behaviors;
 
 public interface BehaviorSoldier {
    float getHp();

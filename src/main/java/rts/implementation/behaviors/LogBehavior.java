@@ -1,4 +1,4 @@
-package rts.behaviors;
+package rts.implementation.behaviors;
 
 public class LogBehavior extends ABehavior {
 
