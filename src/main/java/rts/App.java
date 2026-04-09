@@ -2,6 +2,8 @@ package rts;
 
 import rts.abstraction.Barbarian;
 import rts.abstraction.IUnit;
+import rts.ages.Factory;
+import rts.ages.SpaceAge;
 import rts.behaviors.BehaviorSoldier;
 import rts.equipments.Blaster;
 import rts.equipments.IEquipment;
@@ -12,6 +14,7 @@ import rts.equipments.IEquipment;
 public class App {
     public static void main(String[] args) {
         addWeaponTest();
+        factorytest(new SpaceAge());
     }
 
     public static void fight(BehaviorSoldier s1, BehaviorSoldier s2){
@@ -43,6 +46,17 @@ public class App {
         System.out.println("Tuco 's attack damage : " + tuco.getAD());
         tuco.removeEquipment(gun); 
         System.out.println(tuco.getAD());
+    }
+
+    public static void factorytest(Factory f){
+        IUnit u1 = f.makeMeleeUnit("foo");
+        IUnit u2 = f.makeRangedUnit("bar");
+        IEquipment e1 = f.makeMeleeWeapon();
+        IEquipment e2 = f.makeRangedWeapon();
+        u1.addEquipment(e1); 
+        u2.addEquipment(e2);
+        u1.getHit(u2.getAD());
+        System.out.println(u1.getHp());
     }
 }
 
