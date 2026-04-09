@@ -3,6 +3,7 @@ package rts;
 import rts.abstraction.Barbarian;
 import rts.abstraction.IUnit;
 import rts.abstraction.ObservableUnit;
+import rts.abstraction.UnitGroup;
 import rts.ages.Factory;
 import rts.ages.SpaceAge;
 import rts.implementation.behaviors.BehaviorSoldier;
@@ -10,6 +11,7 @@ import rts.implementation.equipments.Blaster;
 import rts.implementation.equipments.IEquipment;
 import rts.observer.EquipmentSubscriber;
 import rts.observer.UnitSubscriber;
+import rts.visitor.UnitCounter;
 
 /**
  * Hello world!
@@ -17,7 +19,8 @@ import rts.observer.UnitSubscriber;
 public class App {
     public static void main(String[] args) {
         Factory f = new SpaceAge();
-        subscriberTest(f);
+        // subscriberTest(f);
+        groupCounterTest(f);
 
     }
 
@@ -77,7 +80,25 @@ public class App {
         System.out.println("------ Removing s from o1 ------");
         o1.removeSubscriber(s);
         o1.getHit(1);
-        
+    }
+
+    public static void groupCounterTest(Factory f){
+        IUnit a0 = f.makeMeleeUnit("1");
+        IUnit a1 = f.makeMeleeUnit("2");
+        IUnit a2 = f.makeRangedUnit("3");
+        IUnit a3 = f.makeRangedUnit("4");
+        UnitGroup g = new UnitGroup("KND");
+        g.addUnit(a0);
+        g.addUnit(a1);
+        g.addUnit(a2);
+        UnitCounter c = new UnitCounter();
+        g.accept(c);
+        System.out.println("number of units found : " + c.getCount());
+        System.out.println("Removing 1 unit");
+        g.removeUnit(a2);
+        c.reset();
+        g.accept(c);
+        System.out.println("number of units found : " + c.getCount());
     }
 }
 

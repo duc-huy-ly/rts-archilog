@@ -3,6 +3,7 @@ package rts.abstraction;
 import java.util.Iterator;
 
 import rts.implementation.equipments.IEquipment;
+import rts.visitor.IVisitor;
 
 public interface IUnit {
     float getHp();
@@ -16,4 +17,5 @@ public interface IUnit {
     Iterator<IUnit> getUnits();
     void addEquipment(IEquipment e);
     void removeEquipment(IEquipment e);
+    void accept(IVisitor visitor);
 }

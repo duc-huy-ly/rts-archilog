@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 import rts.implementation.equipments.IEquipment;
+import rts.visitor.IVisitor;
 
 public class UnitGroup extends ObservableUnit {
 
@@ -121,4 +122,13 @@ public class UnitGroup extends ObservableUnit {
 
     }
 
+    @Override
+    public void accept(IVisitor visitor) {
+        for (IUnit u : _units) {
+            u.accept(visitor);
+        }
+    }
+
+
+    
 }
