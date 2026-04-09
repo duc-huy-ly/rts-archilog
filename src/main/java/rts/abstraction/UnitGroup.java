@@ -7,10 +7,9 @@ import java.util.Iterator;
 import rts.equipments.IEquipment;
 
 public class UnitGroup extends ObservableUnit {
-    private final String _name;
 
     public UnitGroup(String name){
-        _name = name;
+        super(name);
     }
 
     private final ArrayList<IUnit> _units = new ArrayList<>();
@@ -21,7 +20,6 @@ public class UnitGroup extends ObservableUnit {
         if (!_unitSet.contains(u)){
             _units.add(u);
             _unitSet.add(u);
-            notifySubscribers();
         }
     }
 
@@ -73,7 +71,6 @@ public class UnitGroup extends ObservableUnit {
             }
         }
 
-        notifySubscribers();
     }
 
     @Override
@@ -87,7 +84,7 @@ public class UnitGroup extends ObservableUnit {
 
     @Override
     public String getName() {
-        return _name;
+        return super.getName();
     }
 
     @Override
@@ -105,7 +102,6 @@ public class UnitGroup extends ObservableUnit {
         if (_unitSet.contains(u)){
             _units.remove(u);
             _unitSet.remove(u);
-            notifySubscribers();
         }
     }
 
@@ -115,7 +111,6 @@ public class UnitGroup extends ObservableUnit {
            unit.addEquipment(e); 
         }
 
-        notifySubscribers();
     }
 
     @Override
@@ -124,7 +119,6 @@ public class UnitGroup extends ObservableUnit {
             unit.removeEquipment(e);
         }
 
-        notifySubscribers();
     }
 
 }

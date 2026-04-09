@@ -5,14 +5,15 @@ import java.util.Iterator;
 import rts.behaviors.BehaviorSoldier;
 import rts.core.BehaviorExtension;
 import rts.equipments.IEquipment;
+import rts.observer.EventType;
+import rts.observer.UnitEvent;
 
 public abstract class AUnitSimple extends ObservableUnit {
     private BehaviorSoldier _behavior;
-    private final String _name;
 
     public AUnitSimple(BehaviorSoldier behavior, String name) {
+        super(name);
         _behavior = behavior;
-        _name = name;
     }
 
     @Override
@@ -28,7 +29,7 @@ public abstract class AUnitSimple extends ObservableUnit {
     @Override
     public void getHit(float dmg) {
        _behavior.getHit(dmg); 
-       super.notifySubscribers();
+       super.notifySubscribers(new UnitEvent(EventType.HIT_TAKEN, this, dmg, null));
     }
 
     @Override
@@ -38,7 +39,7 @@ public abstract class AUnitSimple extends ObservableUnit {
 
     @Override
     public String getName() {
-        return _name;
+        return super.getName();
     }
 
     @Override
@@ -64,7 +65,7 @@ public abstract class AUnitSimple extends ObservableUnit {
     @Override
     public void addEquipment(IEquipment e) {
         _behavior = e.createExtension(_behavior); 
-        super.notifySubscribers();
+        super.notifySubscribers(new UnitEvent(EventType.EQUIPMENT_ADDED, this, 0, e));
     }
     
 
@@ -73,7 +74,6 @@ public abstract class AUnitSimple extends ObservableUnit {
         // Check if the equipment is at the head
         if (_behavior instanceof BehaviorExtension && ((BehaviorExtension) _behavior).getEquipment() == e){
             _behavior = ((BehaviorExtension) _behavior).get_component();
-            super.notifySubscribers();
             return;
         }
         
@@ -88,7 +88,6 @@ public abstract class AUnitSimple extends ObservableUnit {
         
         if (cur instanceof BehaviorExtension && ((BehaviorExtension) cur).getEquipment() == e){
             ((BehaviorExtension) pre).setBehavior(((BehaviorExtension)cur).get_component());
-            super.notifySubscribers();
         }
         
     }

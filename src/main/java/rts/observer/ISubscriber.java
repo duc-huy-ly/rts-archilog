@@ -1,5 +1,6 @@
 package rts.observer;
 
+
 public interface  ISubscriber {
-    void update(Object o);    
+    void update(UnitEvent e);    
 }

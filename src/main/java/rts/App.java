@@ -8,6 +8,7 @@ import rts.ages.SpaceAge;
 import rts.behaviors.BehaviorSoldier;
 import rts.equipments.Blaster;
 import rts.equipments.IEquipment;
+import rts.observer.EquipmentSubscriber;
 import rts.observer.UnitSubscriber;
 
 /**
@@ -66,10 +67,13 @@ public class App {
         IUnit u1 = f.makeRangedUnit("chuck");
         UnitSubscriber s = new UnitSubscriber();
         UnitSubscriber s2 = new UnitSubscriber();
+        EquipmentSubscriber e = new EquipmentSubscriber();
         ObservableUnit o1 = ((ObservableUnit)u1);
         o1.addSubscriber(s); 
         o1.addSubscriber(s2);
+        o1.addSubscriber(e);
         o1.getHit(1);
+        o1.addEquipment(f.makeMeleeWeapon());
         System.out.println("------ Removing s from o1 ------");
         o1.removeSubscriber(s);
         o1.getHit(1);
