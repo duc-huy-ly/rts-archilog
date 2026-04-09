@@ -8,7 +8,7 @@ import rts.equipments.IEquipment;
 
 public abstract class AUnitSimple extends ObservableUnit {
     private BehaviorSoldier _behavior;
-    private String _name;
+    private final String _name;
 
     public AUnitSimple(BehaviorSoldier behavior, String name) {
         _behavior = behavior;
@@ -64,6 +64,7 @@ public abstract class AUnitSimple extends ObservableUnit {
     @Override
     public void addEquipment(IEquipment e) {
         _behavior = e.createExtension(_behavior); 
+        super.notifySubscribers();
     }
     
 
@@ -72,6 +73,7 @@ public abstract class AUnitSimple extends ObservableUnit {
         // Check if the equipment is at the head
         if (_behavior instanceof BehaviorExtension && ((BehaviorExtension) _behavior).getEquipment() == e){
             _behavior = ((BehaviorExtension) _behavior).get_component();
+            super.notifySubscribers();
             return;
         }
         
@@ -86,6 +88,7 @@ public abstract class AUnitSimple extends ObservableUnit {
         
         if (cur instanceof BehaviorExtension && ((BehaviorExtension) cur).getEquipment() == e){
             ((BehaviorExtension) pre).setBehavior(((BehaviorExtension)cur).get_component());
+            super.notifySubscribers();
         }
         
     }

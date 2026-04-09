@@ -7,20 +7,21 @@ import java.util.Iterator;
 import rts.equipments.IEquipment;
 
 public class UnitGroup extends ObservableUnit {
-    private String _name;
+    private final String _name;
 
     public UnitGroup(String name){
         _name = name;
     }
 
-    private ArrayList<IUnit> _units = new ArrayList<>();
-    private HashSet<IUnit> _unitSet = new HashSet<>();
+    private final ArrayList<IUnit> _units = new ArrayList<>();
+    private final HashSet<IUnit> _unitSet = new HashSet<>();
 
     @Override
     public void addUnit(IUnit u) {
         if (!_unitSet.contains(u)){
             _units.add(u);
             _unitSet.add(u);
+            notifySubscribers();
         }
     }
 
@@ -71,6 +72,8 @@ public class UnitGroup extends ObservableUnit {
                 _unitSet.remove(unit);
             }
         }
+
+        notifySubscribers();
     }
 
     @Override
@@ -102,6 +105,7 @@ public class UnitGroup extends ObservableUnit {
         if (_unitSet.contains(u)){
             _units.remove(u);
             _unitSet.remove(u);
+            notifySubscribers();
         }
     }
 
@@ -110,6 +114,8 @@ public class UnitGroup extends ObservableUnit {
         for (IUnit unit : _units) {
            unit.addEquipment(e); 
         }
+
+        notifySubscribers();
     }
 
     @Override
@@ -117,6 +123,8 @@ public class UnitGroup extends ObservableUnit {
         for (IUnit unit : _units) {
             unit.removeEquipment(e);
         }
+
+        notifySubscribers();
     }
 
 }
